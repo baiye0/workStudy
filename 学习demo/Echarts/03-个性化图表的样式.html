@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#main{
+			width:600px;
+			height: 400px;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+	</div>
+	<script type="text/javascript" src='./echarts.js'></script>
+
+	<script type="text/javascript">
+		//1.基于给定ID的dom,初始化实例
+		var myChart = echarts.init(document.getElementById('main'))
+		//2.指定图表的配置项和数据
+		var option = {
+			backgroundColor:'#2c343c',
+			//文本样式
+			textStyle:{
+				color:'rgba(255,255,255,0.3)'
+			},
+			labelLine:{
+				lineStyle:{
+					color:'rgba(255,255,255,0.3)'
+				}
+			},
+			//映射到阴暗度
+			visualMap:{
+				show:false,
+				min:100,
+				max:400,
+				inRange:{colorLightness:[0,1]}
+			},
+			series:[
+				{
+					name:'访问来源',
+					type:'pie',
+					roseType:'angle',
+					radius:'55%',
+					data:[
+						{value:235,name:'视频广告'},
+						{value:125,name:'联盟广告'},
+						{value:115,name:'邮件营销'},
+						{value:300,name:'订单广告'},
+						{value:22,name:'普通广告'},
+						{value:205,name:'其他广告'},
+
+					],
+					//样式设置
+					itemStyle:{
+						shadowBlur:200,
+						color:'#c23531',
+						shadowColor:'rgba(0,0,0,0.5)'
+					}
+				}
+			]
+		};
+		//3.使用刚配置的数据项显示图表
+		myChart.setOption(option)
+	</script>
+</body>
+</html>
